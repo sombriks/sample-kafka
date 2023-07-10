@@ -1,0 +1,14 @@
+# https://docs.docker.com/compose/extends/#extending-services
+services:
+  kafka:
+    extends:
+      file: docker-compose-base.yml
+      service: kafka
+    expose:
+      - 9094
+    depends_on:
+      - zookeeper
+  zookeeper:
+    extends:
+      file: docker-compose-base.yml
+      service: zookeeper
