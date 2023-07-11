@@ -2,11 +2,14 @@
 <configuration>
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %cyan(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{20}): %msg%n%throwable
-            </Pattern>
-        </layout>
+<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--            <Pattern>-->
+<!--                %cyan(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{20}): %msg%n%throwable-->
+<!--            </Pattern>-->
+<!--        </layout>-->
+        <encoder>
+            <pattern>%cyan(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{20}): %msg%n%throwable</pattern>
+        </encoder>
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">

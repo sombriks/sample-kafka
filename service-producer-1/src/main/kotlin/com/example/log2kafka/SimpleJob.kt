@@ -9,11 +9,11 @@ import java.util.*
 @Service
 class SimpleJob(val template: KafkaTemplate<String?, String?>) {
 
-    private val logger = LoggerFactory.getLogger(SimpleJob::class.java)
+    private val logger by lazy { LoggerFactory.getLogger(SimpleJob::class.java) }
 
     @Scheduled(fixedRate = 5000)
-    fun work(){
+    fun work() {
         logger.info("${Date()}")
-        template.send("logs","teste") // TODO logback appender
+        template.send("logs", "teste") // TODO logback appender
     }
 }
