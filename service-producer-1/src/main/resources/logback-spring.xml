@@ -21,8 +21,11 @@
         </encoder>
     </appender>
 
+    <appender name="Kafka" class="com.example.log2kafka.SpringAppender"/>
+
     <logger name="com.example.log2kafka" level="trace" additivity="false">
         <appender-ref ref="Console"/>
         <appender-ref ref="FILE"/>
+        <appender-ref ref="Kafka"/>
     </logger>
 </configuration>

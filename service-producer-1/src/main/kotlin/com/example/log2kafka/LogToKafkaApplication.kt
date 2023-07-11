@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @SpringBootApplication
 class LogToKafkaApplication
 
+
+
 fun main(args: Array<String>) {
-	runApplication<LogToKafkaApplication>(*args)
+	SpringAppender.ctx = runApplication<LogToKafkaApplication>(*args)
 }
