@@ -19,15 +19,26 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	implementation("org.springframework.boot:spring-boot-starter-webflux") {
+		exclude("org.springframework.boot", "spring-boot-starter-logging")
+	}
+	implementation("org.springframework.boot:spring-boot-starter-log4j2")
+	implementation("org.apache.logging.log4j:log4j-spring-boot")
 	implementation("org.springframework.kafka:spring-kafka")
+	implementation("org.apache.kafka:kafka-log4j-appender") {
+		exclude("org.slf4j", "slf4j-log4j12")
+	}
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
+	testImplementation("io.projectreactor:reactor-test")
 }
 
 tasks.withType<KotlinCompile> {
