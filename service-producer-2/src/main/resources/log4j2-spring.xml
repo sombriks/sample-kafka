@@ -36,6 +36,8 @@
             <AppenderRef ref="Kafka"/>
         </Root>
         <!-- Do not let org.apache.kafka log to a Kafka appender on DEBUG level. That will cause recursive logging -->
-        <Logger name="org.apache.kafka" level="warn" />
+        <Logger name="org.apache.kafka" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
     </Loggers>
 </Configuration>
