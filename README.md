@@ -68,8 +68,8 @@ itself, and then it enters into an infinite loop. I am working on it.
 - install java-jdk-17, some IDE (intellij is better)
 
 ```bash
-cd service-producer-2
-sh ./gradlew build ; sh ./gradlew bootRun
+cd service-consumer-1
+sh ./mvnw compile ; sh ./mvnw exec:java
 ```
 
 Kafka consumers subscribes to topics and then starts to consume them in real
