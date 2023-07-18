@@ -13,6 +13,6 @@ class SimpleJob {
 
     @Scheduled(fixedRate = 5000)
     fun work() {
-        logger.info("${Date()}")
+        logger.info("service-producer-2 - ${Date()}")
     }
 }

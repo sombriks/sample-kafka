@@ -1,6 +1,6 @@
 # service-broker-kafka
 
-Small proof of concept on how to route log messages from one app to a log
+Small proof of concept on how to route log messages from one kafkaConsumerApp to a log
 consumer through a kafka broker
 
 ## How kafka works
@@ -30,8 +30,23 @@ cd service-producer-1
 sh ./gradlew build ; sh ./gradlew bootRun
 ```
 
-First producer uses default logback logging spring boot subsystem (and does not
-work yet)
+First producer uses default logback logging spring boot subsystem and does not
+work yet. Messages to kafka streams must be sent in a explicit way
+
+```kotlin
+@Service
+class SimpleJob(val template: KafkaTemplate<String?, String?>) {
+
+    private val logger by lazy { LoggerFactory.getLogger(SimpleJob::class.java) }
+
+    @Scheduled(fixedRate = 5000)
+    fun work() {
+        val date = "${Date()}"
+        logger.info(date)
+        template.send("logs", date)
+    }
+}
+```
 
 ## how to run the service-producer-2
 

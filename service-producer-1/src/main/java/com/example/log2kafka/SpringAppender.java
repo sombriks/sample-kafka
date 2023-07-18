@@ -9,7 +9,6 @@ public class SpringAppender extends AppenderBase<ILoggingEvent> {
 
     @Override
     protected void append(ILoggingEvent eventObject) {
-        System.out.println(eventObject);
         if(contextHelper != null) {
             System.out.println(contextHelper.getSpringContext());
         }

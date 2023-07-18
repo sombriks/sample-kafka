@@ -13,7 +13,8 @@ class SimpleJob(val template: KafkaTemplate<String?, String?>) {
 
     @Scheduled(fixedRate = 5000)
     fun work() {
-        logger.info("${Date()}")
-        template.send("logs", "teste") // TODO logback appender
+        val date = "service-producer-1 - ${Date()}"
+        logger.info(date)
+        template.send("logs", date)
     }
 }
