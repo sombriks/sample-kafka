@@ -4,6 +4,7 @@ import com.example.consumer.SimpleKafkaConsumer;
 import io.javalin.http.Context;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ConsumerController {
 
@@ -18,6 +19,10 @@ public class ConsumerController {
     }
 
     public void listTopics(Context ctx) {
-        ctx.json(new ArrayList<String>());
+        try {
+            ctx.json(consumer.listTopics());
+        } catch (Exception e) {
+            ctx.status(500).json(e);
+        }
     }
 }
