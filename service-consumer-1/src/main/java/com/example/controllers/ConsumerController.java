@@ -25,4 +25,8 @@ public class ConsumerController {
             ctx.status(500).json(e);
         }
     }
+
+    public void isRunning(Context ctx) {
+        ctx.json(consumer.isRunning());
+    }
 }

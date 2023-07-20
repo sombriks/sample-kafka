@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.path;
-
 public class KafkaConsumerApp {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaConsumerApp.class);
@@ -18,8 +17,8 @@ public class KafkaConsumerApp {
 
     final Javalin server;
 
-    SimpleKafkaConsumer consumer;
-    ConsumerController controller;
+    final SimpleKafkaConsumer consumer;
+    final ConsumerController controller;
 
     public KafkaConsumerApp() throws Exception {
 
@@ -35,6 +34,7 @@ public class KafkaConsumerApp {
             path("topics", () -> {
                 get(controller::listTopics);
             });
+            get("/running", controller::isRunning);
         });
     }
 
