@@ -72,10 +72,24 @@ cd service-consumer-1
 sh ./mvnw compile ; sh ./mvnw exec:java
 ```
 
-Kafka consumers subscribes to topics and then starts to consume them in real
-time. 
+This project aims to use as little boilerplate as possible. it uses 
+[javalin](https://javalin.io/), a lightweight java/kotlin web framework and
+kafka-client libraries directly.
+
+Kafka consumers subscribes to topics and then starts to poll them in real time,
+synchronously.
 
 That means you're not supposed to consume kafka streams in the main thread of a
 web server, it will hang.
 
-So this service is different.
+Therefore, this project spawns another thread and then polls kafka messages from
+there.
+
+## how to run service-consumer-2
+
+This project uses spring-boot-kafka to consume the streams.
+
+```bash
+cd service-consumer-2
+sh ./mvnw compile ; sh ./mvnw spring-boot:run
+```

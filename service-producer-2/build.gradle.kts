@@ -20,9 +20,7 @@ repositories {
 
 dependencies {
 
-	implementation("org.springframework.boot:spring-boot-starter-webflux") {
-		exclude("org.springframework.boot", "spring-boot-starter-logging")
-	}
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-log4j2")
 	implementation("org.apache.logging.log4j:log4j-spring-boot")
 	implementation("org.springframework.kafka:spring-kafka")
@@ -39,6 +37,12 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
 	testImplementation("io.projectreactor:reactor-test")
+
+	modules {
+		module("org.springframework.boot:spring-boot-starter-logging") {
+			replacedBy("org.springframework.boot:spring-boot-starter-log4j2", "Use Log4j2 instead of Logback")
+		}
+	}
 }
 
 tasks.withType<KotlinCompile> {
