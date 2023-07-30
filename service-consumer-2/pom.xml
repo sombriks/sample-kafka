@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<kotlin.version>1.8.22</kotlin.version>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -67,6 +69,7 @@
 				<configuration>
 					<args>
 						<arg>-Xjsr305=strict</arg>
+						<arg>-jvm-target=17</arg>
 					</args>
 					<compilerPlugins>
 						<plugin>spring</plugin>
